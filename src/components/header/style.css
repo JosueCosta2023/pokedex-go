@@ -1,0 +1,66 @@
+.container-header{
+    width: 100%;
+}
+
+.content-header{
+    width: 700px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.container-header .header-logo{
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-header .header-logo .logo{
+    display: flex;
+    align-items: center;
+}
+
+.container-header .header-logo h3{
+    margin-left: 16px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.container-header .header-navigation{
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.container-header .header-navigation form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.container-header .header-navigation form select{
+    width: 280px;
+    height: 32px;
+    border-radius: 16px;
+    font-size: 10px;
+    color: #666666;
+    padding: 0 16px;
+    appearance: none;
+}
+
+.container-header .header-navigation form button{
+    height: 32px;
+    border-radius: 16px;
+    font-size: 10px;
+    background-color: #fff;
+    padding: 0 16px;
+    color: #DC0A2D;
+}
