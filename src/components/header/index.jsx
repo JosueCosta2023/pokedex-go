@@ -1,7 +1,8 @@
 import './style.css'
 import logo from '../../assets/Pokeball.svg'
 import React from 'react'
-import {FiSun, FiMoon} from 'react-icons/fi'
+import { ThemeTogglerIcon } from '../theme-toggler/theme-toggler-icons'
+
 
 function Header() {
     return (
@@ -12,8 +13,7 @@ function Header() {
                         <img src={logo} alt="Pokeball" />
                         <h3>Pokedéx</h3>
                     </div>
-                    <FiSun size={16} color='white'/>
-                    <FiMoon size={16} color='white'/>
+                    <ThemeTogglerIcon/>
                 </div>
                 <nav className='header-navigation'>
                     <form action="">
