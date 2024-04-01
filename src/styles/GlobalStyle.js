@@ -3,9 +3,7 @@ import './fonts.css'
 
 const Reset = createGlobalStyle`
   /* Box sizing rules */
-  *,
-  *::before,
-  *::after {
+  * {
     box-sizing: border-box;
   }
 
@@ -21,6 +19,9 @@ const Reset = createGlobalStyle`
   dl,
   dd {
     margin: 0;
+  }
+  a{
+    color: white;
   }
 
   /* Remove list styles on ul, ol elements */
