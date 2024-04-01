@@ -1,6 +1,4 @@
-
-
-import { createGlobalStyle } from 'styled-components';
+import {createGlobalStyle } from 'styled-components';
 import './fonts.css'
 
 const Reset = createGlobalStyle`
@@ -63,7 +61,6 @@ const Reset = createGlobalStyle`
   /* Typography */
   body {
     font-family: Arial, sans-serif;
-    background:#DC0A2D;
   }
 
   /* Remove focus outline for mouse users */

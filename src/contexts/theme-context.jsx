@@ -1,4 +1,4 @@
-import { createContext } from "react"
+import { createContext, useState } from "react"
 import {FiSun, FiMoon} from 'react-icons/fi'
 
 export const themes = {
@@ -10,7 +10,7 @@ export const themes = {
 
     moon: {
         color: '#000',
-        backhround: '#000',
+        background: '#393D46',
         iconTheme: <FiMoon size={18} color="white"/>
     }
 }
@@ -19,8 +19,11 @@ export const ThemeContext = createContext({})
 
 
 export const ThemeProvider = (props) => {
+
+    const [theme, setTheme] = useState(themes.sun)
+
     return (
-        <ThemeContext.Provider value={{themes}}>
+        <ThemeContext.Provider value={{theme, setTheme}}>
             {props.children}
         </ThemeContext.Provider>
     )

@@ -1,10 +1,14 @@
 import './style.css'
 import logo from '../../assets/Pokeball.svg'
-import React from 'react'
+import React, {useContext} from 'react'
 import { ThemeTogglerIcon } from '../theme-toggler/theme-toggler-icons'
+import { ThemeContext } from '../../contexts/theme-context'
+
 
 
 function Header() {
+    const theme = useContext(ThemeContext)
+
     return (
         <header className='container-header'>
             <div className='content-header'>
@@ -13,7 +17,7 @@ function Header() {
                         <img src={logo} alt="Pokeball" />
                         <h3>Pokedéx</h3>
                     </div>
-                    <ThemeTogglerIcon/>
+                    <ThemeTogglerIcon />
                 </div>
                 <nav className='header-navigation'>
                     <form action="">
@@ -23,12 +27,13 @@ function Header() {
                             <option value="">Fogo</option>
                             <option value="">Grama</option>
                         </select>
-                        <button type='submit'>Buscar</button>
+                        <button type='submit' style={{color: theme.theme.color}}>Buscar</button>
                     </form>
                 </nav>
             </div>
         </header>
     )
 }
+
 
 export default Header
