@@ -1,0 +1,19 @@
+Estrutura de dados
+
+Dados tela Principal
+    nome do pokemon => obter no link principal da api => navegação array simples
+    id do pokemon => obter no link principal e utilizar na navegação para details => navegação array simples
+    imagem do pokemon => obter atraves do promisseAll e buscar imagem gif => navegação array complexa
+
+Dados tela de Detalhes
+    Nome do pokemon => navegação array simples
+    Id do pokemon => navegação array simples
+    Imagem do pokemon => navegação array simples
+    tipos do pokemon => navegação array simples
+    Tamanho do pokemon => navegação array simples
+    Altura do pokemon => navegação array simples
+    Os três pricipais movimentos => => navegação array simples, limitar o loop em 3
+    Tres status especificos, xp, hp e atack => navegação simples
+    As Habilidades => navegação link complexa => limitar o loop em 3,  defina um tamanho maximo de caracteres em 255 para cada resposta
+
+aplicar skeleton

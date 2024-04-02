@@ -9,7 +9,70 @@ function Main() {
                 <div className='card'>
                     <span className='card-id'>#001</span>
                     <img src={pokemonDefault} alt="pokemon" className='card-img' />
-                    <p className='card-name'>Mew Two</p>
+                    <p className='card-name'>Bulbasaur</p>
+                </div>
+            </Link>
+            <Link to={'/detail'}>
+                <div className='card'>
+                    <span className='card-id'>#001</span>
+                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
+                    <p className='card-name'>Charmander</p>
+                </div>
+            </Link>
+            <Link to={'/detail'}>
+                <div className='card'>
+                    <span className='card-id'>#001</span>
+                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
+                    <p className='card-name'>Pikachu</p>
+                </div>
+            </Link>
+            <Link to={'/detail'}>
+                <div className='card'>
+                    <span className='card-id'>#001</span>
+                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
+                    <p className='card-name'>Bulbasaur</p>
+                </div>
+            </Link>
+            <Link to={'/detail'}>
+                <div className='card'>
+                    <span className='card-id'>#001</span>
+                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
+                    <p className='card-name'>Charmander</p>
+                </div>
+            </Link>
+            <Link to={'/detail'}>
+                <div className='card'>
+                    <span className='card-id'>#001</span>
+                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
+                    <p className='card-name'>Pikachu</p>
+                </div>
+            </Link>
+            <Link to={'/detail'}>
+                <div className='card'>
+                    <span className='card-id'>#001</span>
+                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
+                    <p className='card-name'>Pikachu</p>
+                </div>
+            </Link>
+            <Link to={'/detail'}>
+                <div className='card'>
+                    <span className='card-id'>#001</span>
+                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
+                    <p className='card-name'>Pikachu</p>
+                </div>
+            </Link>
+            <Link to={'/detail'}>
+                <div className='card'>
+                    <span className='card-id'>#001</span>
+                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
+                    <p className='card-name'>Pikachu</p>
+                </div>
+            </Link>
+            <Link to={'/detail'}>
+                <div className='card'>
+                    <span className='card-id'>#001</span>
+                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
+                    <p className='card-name'>Pikachu</p>
                 </div>
             </Link>
         </main>
