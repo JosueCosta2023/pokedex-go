@@ -1,80 +1,42 @@
 import './style.css'
 import pokemonDefault from '../../assets/pokemon.svg'
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getPokemons } from '../../service/getApi'
 
 function Main() {
+
+    const [pokemons, setPokemons] = useState([])
+  
+    useEffect(() => {
+        
+        const fetchPokemons = async () => {
+            try {
+                const response = await getPokemons()
+                setPokemons(response)
+            } catch (error) {
+                console.error("Erro ao buscar os pokemons", error)
+            }
+        }
+        fetchPokemons()
+    }, [])
+
+    
+
+    
+    
     return (
         <main className='container-pokemons'>
-            <Link to={'/detail'}>
-                <div className='card'>
-                    <span className='card-id'>#001</span>
-                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
-                    <p className='card-name'>Bulbasaur</p>
-                </div>
-            </Link>
-            <Link to={'/detail'}>
-                <div className='card'>
-                    <span className='card-id'>#001</span>
-                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
-                    <p className='card-name'>Charmander</p>
-                </div>
-            </Link>
-            <Link to={'/detail'}>
-                <div className='card'>
-                    <span className='card-id'>#001</span>
-                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
-                    <p className='card-name'>Pikachu</p>
-                </div>
-            </Link>
-            <Link to={'/detail'}>
-                <div className='card'>
-                    <span className='card-id'>#001</span>
-                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
-                    <p className='card-name'>Bulbasaur</p>
-                </div>
-            </Link>
-            <Link to={'/detail'}>
-                <div className='card'>
-                    <span className='card-id'>#001</span>
-                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
-                    <p className='card-name'>Charmander</p>
-                </div>
-            </Link>
-            <Link to={'/detail'}>
-                <div className='card'>
-                    <span className='card-id'>#001</span>
-                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
-                    <p className='card-name'>Pikachu</p>
-                </div>
-            </Link>
-            <Link to={'/detail'}>
-                <div className='card'>
-                    <span className='card-id'>#001</span>
-                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
-                    <p className='card-name'>Pikachu</p>
-                </div>
-            </Link>
-            <Link to={'/detail'}>
-                <div className='card'>
-                    <span className='card-id'>#001</span>
-                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
-                    <p className='card-name'>Pikachu</p>
-                </div>
-            </Link>
-            <Link to={'/detail'}>
-                <div className='card'>
-                    <span className='card-id'>#001</span>
-                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
-                    <p className='card-name'>Pikachu</p>
-                </div>
-            </Link>
-            <Link to={'/detail'}>
-                <div className='card'>
-                    <span className='card-id'>#001</span>
-                    <img src={pokemonDefault} alt="pokemon" className='card-img' />
-                    <p className='card-name'>Pikachu</p>
-                </div>
-            </Link>
+                {pokemons.map((pokemon, index) => (
+                <Link to={'/detail'} key={index}>
+                    <div className='card'>
+                        <span className='card-id'>#0{index}</span>
+                        <img src={pokemonDefault} alt="pokemon" className='card-img' />
+                        <p className='card-name'>{pokemon.name}</p>
+                    </div>
+                </Link>
+
+                ))}
         </main>
     )
 }
