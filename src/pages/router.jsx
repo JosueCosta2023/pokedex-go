@@ -9,7 +9,7 @@ export function Routers(){
         <Router>
             <Routes>
                 <Route exact path="/" element={<Home/>}/>
-                <Route exact path="/detail" element={<Detail/>}/>
+                <Route exact path="/detail/:id" element={<Detail/>}/>
             </Routes>
         </Router>
     )

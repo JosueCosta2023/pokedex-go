@@ -5,9 +5,34 @@ import HeightIcon from '../../assets/height.svg'
 import BannerPokeball from '../../assets/bannerpoke.svg'
 import PokemonImg from '../../assets/pokemon.svg'
 import { FiArrowLeft } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+
 
 export function Card() {
+
+    const [pokemonDetail, setPokemonDetail] = useState([])
+
+    const { id } = useParams()
+
+    useEffect(() => {
+
+        async function fetchPokemonsDetails() {
+            try {
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+                setPokemonDetail(response.data)
+            } catch (error) {
+                console.error('Erro ao buscar detalhes do pokemon', error)
+            }
+        }
+
+        fetchPokemonsDetails()
+
+    }, [])
+
+    console.log(pokemonDetail)
+
     return (
         <section className="container-details">
             <div className="card-pokemon">
@@ -17,18 +42,23 @@ export function Card() {
                         <Link to={'/'}>
                             <FiArrowLeft size={24} />
                         </Link>
-                        <p>Bulbasaur</p>
+                        <p>{pokemonDetail.name}</p>
                     </div>
-                    <span>#001</span>
+                    <span>#0{pokemonDetail.id}</span>
                 </div>
 
                 <div className="pokemon-image">
-                    <img src={PokemonImg} alt="" />
+                    <img src={pokemonDetail.sprites?.other['official-artwork'].front_default} alt="" />
                 </div>
 
                 <div className="pokemon-type">
-                    <span>Poison</span>
-                    <span>Grass</span>
+                    {
+                        pokemonDetail.types && pokemonDetail.types.map((types, index) => {
+                            return (
+                                <span key={index}>{types.type.name}</span>
+                            )
+                        })
+                    }
                 </div>
 
                 <div className="pokemon-about">
@@ -37,14 +67,14 @@ export function Card() {
                         <div>
                             <div>
                                 <img src={WeightIcon} alt="Icone de peso" />
-                                <span> 6.9 Kg</span>
+                                <span>{pokemonDetail.weight} Kg</span>
                             </div>
                             <p>Peso</p>
                         </div>
                         <div>
                             <div>
                                 <img src={HeightIcon} alt="Icone de altura" />
-                                <span> 0.7 Cm</span>
+                                <span> {pokemonDetail.height} Cm</span>
                             </div>
                             <p>Altura</p>
                         </div>
@@ -52,11 +82,15 @@ export function Card() {
                 </div>
 
                 <div className="pokemon-moves">
-                    <h3>Movimentos Principais</h3>
+                    <h3>Principais Movimentos</h3>
                     <div>
-                        <span>Razor Leaf</span>
-                        <span>Solar Beam</span>
-                        <span>Sludge Bomb</span>
+                    {
+                        pokemonDetail.moves && pokemonDetail.moves.slice(0,3).map((moves, index) => {
+                            return (
+                                <span key={index}>{moves.move.name}</span>
+                            )
+                        })
+                    }
                     </div>
                 </div>
 
@@ -65,16 +99,19 @@ export function Card() {
                     <div>
                         <div>
                             <p>Xp</p>
-                            <span>64</span>
+                            <span>{pokemonDetail.base_experience}</span>
                         </div>
-                        <div>
-                            <p>Atack</p>
-                            <span>49</span>
-                        </div>
-                        <div>
-                            <p>Hp</p>
-                            <span>45</span>
-                        </div>
+
+                        {
+                           pokemonDetail.stats && pokemonDetail.stats.map((item, index) => {
+                                <div key={index}>
+                                    <p >{item.stat.name}</p>
+                                    <span>{item.base_stat}</span>
+                                </div>
+
+                            })
+                        }
+
                     </div>
                 </div>
             </div>
