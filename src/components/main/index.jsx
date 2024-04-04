@@ -7,9 +7,9 @@ import axios from 'axios'
 function Main() {
 
     const [pokemons, setPokemons] = useState([])
-  
+
     useEffect(() => {
-        
+
         const fetchPokemons = async () => {
             try {
                 const response = await getPokemons()
@@ -17,20 +17,19 @@ function Main() {
                     const res = await axios.get(pokemon.url)
                     return res.data
                 })
-
                 const data = await Promise.all(promises)
                 setPokemons(data)
-                
+
             } catch (error) {
                 console.error("Erro ao buscar os pokemons", error)
             }
         }
         fetchPokemons()
     }, [])
-    
+
     return (
         <main className='container-pokemons'>
-                {pokemons.map((pokemon, index) => (
+            {pokemons.map((pokemon, index) => (
                 <Link to={`/detail/${pokemon.id}`} key={index}>
                     <div className='card'>
                         <span className='card-id'>#0{pokemon.id}</span>
@@ -39,7 +38,7 @@ function Main() {
                     </div>
                 </Link>
 
-                ))}
+            ))}
         </main>
     )
 }

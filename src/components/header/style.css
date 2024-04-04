@@ -54,6 +54,12 @@
     color: #666666;
     padding: 0 16px;
     appearance: none;
+    text-transform: capitalize;
+}
+
+.container-header .header-navigation form select option{
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .container-header .header-navigation form button{
