@@ -26,6 +26,9 @@ export function Card() {
         }
         fetchPokemonsDetails()
     }, [])
+    const limitCaracter = (description_ability, maxLength) => {
+        return description_ability.length > maxLength ? description_ability.substring(0, maxLength) + '...' : description_ability;
+      };
 
     return (
         <section className="container-details">
@@ -61,7 +64,7 @@ export function Card() {
                         <div>
                             <div>
                                 <img src={WeightIcon} alt="Icone de peso" />
-                                <span>{pokemonDetail.weight} Kg</span>
+                                <span>{pokemonDetail.weight} G</span>
                             </div>
                             <p>Peso</p>
                         </div>
@@ -123,7 +126,7 @@ export function Card() {
                     {pokemonDetail.abilities && pokemonDetail.abilities.slice(0,3).map((aby, index) => (
                         <div className="pokemon-ability" key={index}>
                             <p className="name-ability">{aby.ability.name}</p>
-                            <span className="description-ability">{aby.ability.description_ability}</span>
+                            <span className="description-ability">{ limitCaracter(aby.ability.description_ability, 255)}</span>
                         </div>
                     ))
                     }

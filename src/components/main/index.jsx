@@ -1,10 +1,10 @@
 import './style.css'
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import { getPokemons } from '../../service/getApi'
-import axios from 'axios'
 
-function Main() {
+import React, {useEffect, useState} from 'react'
+
+export function Main() {
 
     const [pokemons, setPokemons] = useState([])
 
@@ -13,20 +13,15 @@ function Main() {
         const fetchPokemons = async () => {
             try {
                 const response = await getPokemons()
-                const promises = response.map(async (pokemon) => {
-                    const res = await axios.get(pokemon.url)
-                    return res.data
-                })
-                const data = await Promise.all(promises)
-                setPokemons(data)
-
+                setPokemons(response)
             } catch (error) {
-                console.error("Erro ao buscar os pokemons", error)
+                console.error("Erro ao buscar dados inicais do pokemon.", error)
             }
         }
         fetchPokemons()
     }, [])
 
+    
     return (
         <main className='container-pokemons'>
             {pokemons.map((pokemon, index) => (
@@ -37,10 +32,8 @@ function Main() {
                         <p className='card-name'>{pokemon.name}</p>
                     </div>
                 </Link>
-
             ))}
         </main>
     )
 }
 
-export default Main

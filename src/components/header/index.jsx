@@ -1,38 +1,35 @@
 import './style.css'
 import logo from '../../assets/Pokeball.svg'
-import React, {useContext, useEffect, useState} from 'react'
 import { ThemeTogglerIcon } from '../theme-toggler/theme-toggler-icons'
+import { useContext, useEffect, useState } from 'react'
 import { ThemeContext } from '../../contexts/theme-context'
 import { getTypesPokemons } from '../../service/getApi'
 
 function Header() {
     const theme = useContext(ThemeContext)
     const [pokemonsType, setPokemonType] = useState([])
-    const [selectedType, setSelectedType] = useState()
+    const [selectedType, setSelectedType] = useState([])
 
     useEffect(() => {
-        async function fetchTypePokemons(){
+        async function fetchTypePokemons() {
             try {
                 const response = await getTypesPokemons()
                 setPokemonType(response)
-                
             } catch (error) {
                 console.error("Falha ao buscar os tipos de pokemons")
             }
         }
-
         fetchTypePokemons()
-
     }, [])
 
-    const handleType = (e) => {
+    const loadType = (e) => {
         setSelectedType(e.target.value)
-        console.log(selectedType)
     }
 
-
-
-
+    const fetchPokemonsTypes = () => {
+        console.log(selectedType)
+        return response
+    }
 
     return (
         <header className='container-header'>
@@ -46,13 +43,17 @@ function Header() {
                 </div>
                 <nav className='header-navigation'>
                     <form action="">
-                        <select name="type" id="type">
+                        <select
+                            name="type"
+                            id="type"
+                            onChange={loadType}
+                        >
                             <option value="all">Selecione um tipo de pokemon</option>
                             {pokemonsType && pokemonsType.map((type, index) => (
                                 <option key={index} value={type.name}>{type.name}</option>
                             ))}
                         </select>
-                        <button type='submit' style={{color: theme.theme.color}} onClick={handleType}>Buscar</button>
+                        <button style={{ color: theme.theme.color }} onClick={fetchPokemonsTypes}>Buscar</button>
                     </form>
                 </nav>
             </div>
