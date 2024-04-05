@@ -1,68 +1,58 @@
 import './style.css'
 import { Link } from 'react-router-dom'
-import { getPokemons, getPokemonsForTypes } from '../../service/getApi'
-import React, { useEffect, useState } from 'react'
 
+import React, { useContext, useEffect, useState } from 'react'
+import { ThemeContext } from '../../contexts/theme-context'
+import axios from 'axios'
 
 export function Main() {
 
-    const [pokemons, setPokemons] = useState([])
-    const [pokemonsViaType, SetPokemonsViaType] = useState([])
-
+    const [pokemons, setPokemon] = useState([])
+    const [nextUrl, setNextUrl] = useState("");
+    const theme = useContext(ThemeContext)
+    
     useEffect(() => {
+        fetchPokemonData("https://pokeapi.co/api/v2/pokemon?limit=20");
+    }, []);
 
-        const fetchPokemons = async () => {
-            try {
-                const response = await getPokemons()
-                setPokemons(response)
-            } catch (error) {
-                console.error("Erro ao buscar dados inicais do pokemon.", error)
-            }
+    const fetchPokemonData = async (url) => {
+        try {
+            const response = await axios.get(url);
+            const { results, next } = response.data;
+            const pokemonPromises = results.map(async (result) => {
+                const pokemonResponse = await axios.get(result.url);
+                return pokemonResponse.data;
+            });
+            const pokemonData = await Promise.all(pokemonPromises);
+            setPokemon((prevData) => [...pokemons ,...pokemonData]);
+            setNextUrl(next);
+        } catch (error) {
+            console.error("Error fetching Pokemon data:", error);
         }
-        fetchPokemons()
-    }, [])
+    };
 
-    useEffect(()=>{
-
-        const fetchPokemonType = async () => {
-            const responseType = await getPokemonsForTypes()
-            SetPokemonsViaType(responseType)
+    const loadMorePokemon = async () => {
+        if (nextUrl) {
+            fetchPokemonData(nextUrl);
         }
+    }
 
-
-        fetchPokemonType()
-    }, [pokemonsViaType])
-
-    console.log("Final")
-    console.log(pokemonsViaType)
 
     return (
         <main className='container-pokemons'>
             {
-
-                pokemonsViaType && pokemonsViaType.length > 0
-
-                    ?
-                    pokemonsViaType.map((pokemon, index) => (
-                        <Link to={`/detail/${pokemon.id}`} key={index}>
-                            <div className='card'>
-                                <span className='card-id'>#0{pokemon.id}</span>
-                                <img src={pokemon.sprites.other['official-artwork'].front_default} alt="pokemon" className='card-img' />
-                                <p className='card-name'>{pokemon.name}</p>
-                            </div>
-                        </Link>))
-                    :
-                    pokemons.map((pokemon, index) => (
-                        <Link to={`/detail/${pokemon.id}`} key={index}>
-                            <div className='card'>
-                                <span className='card-id'>#0{pokemon.id}</span>
-                                <img src={pokemon.sprites.other['official-artwork'].front_default} alt="pokemon" className='card-img' />
-                                <p className='card-name'>{pokemon.name}</p>
-                            </div>
-                        </Link>
-                    ))
+                pokemons.map((pokemon, index) => (
+                    <Link to={`/detail/${pokemon.id}`} key={index}>
+                        <div className='card'>
+                            <span className='card-id'>#0{pokemon.id}</span>
+                            <img src={pokemon.sprites?.other['official-artwork'].front_default} alt="pokemon" className='card-img' />
+                            <p className='card-name'>{pokemon.name}</p>
+                        </div>
+                    </Link>
+                ))
 
             }
+            <button style={{ backgroundColor: theme.theme.background }} onClick={loadMorePokemon}>Carregar Mais</button>
         </main>
     )
 }

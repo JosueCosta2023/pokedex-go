@@ -30,6 +30,8 @@ export function Card() {
         return description_ability.length > maxLength ? description_ability.substring(0, maxLength) + '...' : description_ability;
       };
 
+      console.log(pokemonDetail)
+
     return (
         <section className="container-details">
             <div className="card-pokemon">
@@ -45,7 +47,7 @@ export function Card() {
                 </div>
 
                 <div className="pokemon-image">
-                    <img src={pokemonDetail.sprites?.other['official-artwork'].front_default} alt="" />
+                    <img src={pokemonDetail.sprites?.other['dream_world'].front_default} alt="" />
                 </div>
 
                 <div className="pokemon-type">
