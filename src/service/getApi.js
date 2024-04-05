@@ -8,6 +8,7 @@ export async function getPokemons() {
             return res.data
         })
         return await Promise.all(promises)
+
          
     } catch (error) {
         console.error("Erro ao buscar dados inicais do pokemon.", error)

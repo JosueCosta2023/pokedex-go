@@ -23,18 +23,18 @@ export function Main() {
     }, [])
 
     useEffect(()=>{
-        const fetchPokemonType = async () => {
 
+        const fetchPokemonType = async () => {
             const responseType = await getPokemonsForTypes()
-            console.log("Interno")
-            console.log(responseType)
             SetPokemonsViaType(responseType)
         }
-        fetchPokemonType()
-    }, [])
 
-    // console.log("Final")
-    // console.log(pokemonsViaType)
+
+        fetchPokemonType()
+    }, [pokemonsViaType])
+
+    console.log("Final")
+    console.log(pokemonsViaType)
 
     return (
         <main className='container-pokemons'>
