@@ -28,9 +28,7 @@ export function Card() {
     }, [])
     const limitCaracter = (description_ability, maxLength) => {
         return description_ability.length > maxLength ? description_ability.substring(0, maxLength) + '...' : description_ability;
-      };
-
-      console.log(pokemonDetail)
+    };
 
     return (
         <section className="container-details">
@@ -125,10 +123,10 @@ export function Card() {
                 </div>
 
                 <div className="pokemon-habilitys">
-                    {pokemonDetail.abilities && pokemonDetail.abilities.slice(0,3).map((aby, index) => (
+                    {pokemonDetail.abilities && pokemonDetail.abilities.slice(0, 3).map((aby, index) => (
                         <div className="pokemon-ability" key={index}>
                             <p className="name-ability">{aby.ability.name}</p>
-                            <span className="description-ability">{ limitCaracter(aby.ability.description_ability, 255)}</span>
+                            <span className="description-ability">{limitCaracter(aby.ability.description_ability, 255)}</span>
                         </div>
                     ))
                     }
