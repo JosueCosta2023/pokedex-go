@@ -40,21 +40,21 @@
 .container-header .header-navigation form{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
     gap: 10px;
     width: 100%;
     padding: 0 20px;
 }
 
 .container-header .header-navigation form select{
-    width: 280px;
+    width: 100px;
     height: 32px;
     border-radius: 16px;
     font-size: 10px;
     color: #666666;
-    padding: 0 16px;
     appearance: none;
     text-transform: capitalize;
+    text-align: center;
 }
 
 .container-header .header-navigation form select option{

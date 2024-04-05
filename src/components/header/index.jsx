@@ -1,12 +1,10 @@
 import './style.css'
 import logo from '../../assets/Pokeball.svg'
 import { ThemeTogglerIcon } from '../theme-toggler/theme-toggler-icons'
-import { useContext, useEffect, useState } from 'react'
-import { ThemeContext } from '../../contexts/theme-context'
-import { getTypesPokemons } from '../../service/getApi'
+import { useEffect, useState } from 'react'
+import { getPokemonsForTypes, getTypesPokemons } from '../../service/getApi'
 
 function Header() {
-    const theme = useContext(ThemeContext)
     const [pokemonsType, setPokemonType] = useState([])
     const [selectedType, setSelectedType] = useState([])
 
@@ -22,15 +20,11 @@ function Header() {
         fetchTypePokemons()
     }, [])
 
-    const loadType = (e) => {
+    const loadType = async (e) => {
         setSelectedType(e.target.value)
+        getPokemonsForTypes(selectedType)
     }
-
-    const fetchPokemonsTypes = () => {
-        console.log(selectedType)
-        return response
-    }
-
+    
     return (
         <header className='container-header'>
             <div className='content-header'>
@@ -48,12 +42,11 @@ function Header() {
                             id="type"
                             onChange={loadType}
                         >
-                            <option value="all">Selecione um tipo de pokemon</option>
+                            <option value="all">Todos</option>
                             {pokemonsType && pokemonsType.map((type, index) => (
                                 <option key={index} value={type.name}>{type.name}</option>
                             ))}
                         </select>
-                        <button style={{ color: theme.theme.color }} onClick={fetchPokemonsTypes}>Buscar</button>
                     </form>
                 </nav>
             </div>
