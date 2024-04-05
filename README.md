@@ -44,6 +44,8 @@
 - Facebook - [JosueCosta](https://www.facebook.com/JosueOcanhaCosta2023)
 - Whatsapp - [Josue2024](https://wa.me/5565996408371?text=Ol%C3%A1%2C+encontrei+seu+whatsapp+no+Github.+Gostaria+de+falar+sobre+seus+projetos.)
 
+# "Vida longa e próspera. 🖖🖖🖖"
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
