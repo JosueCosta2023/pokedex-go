@@ -2,8 +2,8 @@
 
 ### Sobre o sistema
  *  Este sistema faz requisições a api de prokemons: [PokeApi](https://pokeapi.co/) 
- * O usuário tem acesso a uma lista de pokemons e pode acessar os detalhes de cada pokemon clicando sobre os card's.
- * O usuário também pode escolher o Thema da pagina.
+ * O usuário tem acesso a uma lista de pokemons e pode verificar os detalhes de cada pokemon clicando sobre os card's.
+ * O usuário pode escolher entre os themas "sun" e "Moon" para visualizar a pagina.
 
 ## Para executar o sistema, siga os passos abaixo:
 
@@ -27,6 +27,7 @@
 * `Uso do VITE:` Escolhido devido ao alto desempenho que proporciona.
 * `Uso do AXIOS:` O vite foi escolhido pois ele simplica as requisições a Api's.
 * `Uso do REACT-ROUTER-DOM:` Como o projeto é simples, o react-router-dom foi o suficiente por isso foi escolhido.
+* `Uso do Css`: Optei pelo css, pois tenho maior familiaridade. O Styled-component também era uma opção mas escolhi não implementar neste projeto.
 
 ### Demonstração
 
