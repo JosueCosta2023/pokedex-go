@@ -21,7 +21,7 @@
 * React Router Dom
 * JavaScript
 * Axios
-* Css
+
 
 ## Sobre minhas decisões
 * `Uso do VITE:` Escolhido devido ao alto desempenho que proporciona.
