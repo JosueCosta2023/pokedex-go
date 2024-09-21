@@ -1,10 +1,14 @@
 import {createGlobalStyle } from 'styled-components';
-import './fonts.css'
 
 const Reset = createGlobalStyle`
+
+  
+
+
   /* Box sizing rules */
   * {
     box-sizing: border-box;
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
   }
 
   /* Remove default margin */
